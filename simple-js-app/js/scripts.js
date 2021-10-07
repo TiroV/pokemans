@@ -1,19 +1,24 @@
-// let is a way to establish variables. Use lower case and then Upper case.
-let myName = "Tyler";
-document.write(myName);
-alert(myName);
+let pokemonList = [
+  { name: 'Tyranitar',
+    height: 6,
+    types: ['rock', 'dark']
+  },
 
-//This is how you write a comment in JavaScript
+  { name: 'Umbreon',
+    height: 3,
+    types: ['dark']
+  },
 
-//Math can be done in JavaScript too. That's cool.
+  { name: 'Toxicroak',
+    height: 1,
+    types: ['poison', 'fighting']
+  },
 
-let simpleAddition = 2 + 2;
-document.write(simpleAddition);
+  { name: 'Luxray',
+    height: 2,
+    types: ['electric']
 
-let size = 100;
-let doubleSize = size * 2;
-let minSize = (doubleSize * 2) - (size / 2);
-document.write(minSize);
+  }
 
-let favoriteFood = "Pizza";
-document.write(favoriteFood);
+
+];
