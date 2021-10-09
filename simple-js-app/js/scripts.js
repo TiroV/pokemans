@@ -20,5 +20,19 @@ let pokemonList = [
 
   }
 
-
 ];
+
+for (let i=0; i < pokemonList.length; i++){
+  if (pokemonList[i].height <5 && pokemonList[i].height >2){
+  document.write(pokemonList[i].name + ' is a normal sized pokemon. ');
+}else if(pokemonList[i].height >5){
+  document.write(pokemonList[i].name + ' is a large pokemon. ');
+}else {
+  document.write(pokemonList[i].name + ' is a small pokemon. ');
+}
+
+for (let i=0; i < pokemonList[i].length; i++){
+  document.write(pokemonList)[i].name; i++
+}
+
+}
