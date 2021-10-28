@@ -12,6 +12,8 @@ let pokemonRepository = (function () {
   // Error
 });
 
+//Where all the functions go
+
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
@@ -20,6 +22,8 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+//Adds functionality to the buttons. When clicking button, shows the details
+//from the array to the log.
 function addListItem(pokemon){
   let pokemonList = document.querySelector(".pokemon-list");
   let listPokemon = document.createElement("li");
@@ -32,11 +36,59 @@ function addListItem(pokemon){
   showDetails(pokemon)
   });
 }
-
+//Pulls from the showDetails function, to create and display a button.
+//Logs to the console the details from the function to log to console the pokemon.
 function showDetails(pokemon){
-  console.log(pokemon);
+  loadDetails(pokemon).then(function () {
+    showModal(pokemon)
+    console.log(pokemon)
+  });
 }
 
+//Code that handles the modal
+let modalContainer = document.querySelector('#pokemonModal');
+function showModal(pokemon) {
+  let modalTitle = document.querySelector('.modal-title');
+  let modalBody = document.querySelector('.modal-body');
+
+  modalTitle.append(title);
+  modalBody.append(pokemonSprite);
+  modalBody.append(pokemonHeight);
+  modalBody.append(pokemonTyping);
+  modalBody.append(pokemonWeight);
+
+  modalTitle.innerHTML = '';
+  modalBody.innerHTML = '';
+
+  let title = document.createElement('h5');
+  title.innerHTML = pokemon.name;
+
+  let pokemonHeight = document.createElement('p');
+  pokemonHeight.innerHTML = 'height' + pokemon.Height;
+
+  let pokemonTyping = document.createElement('p');
+  pokemonTyping.innerHTML = 'type' + pokemon.types;
+
+  pokemonWeight = document.createElement('p');
+  pokemonWeight.innerHTML = 'weight' + pokemon.weight;
+
+  let pokemonSprite = document.createElement('img');
+  pokemonSprite.src = pokemon.imageURL;
+
+
+
+  modalTitle.append(title);
+  modalBody.append(pokemonSprite);
+  modalBody.append(pokemonHeight);
+  modalBody.append(pokemonTyping);
+  modalBody.append(pokemonWeight);
+
+}
+
+//End of modal
+
+
+//My attempt at a loading message. Yoops!
 function showLoadingMessage() {
   fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
   if (response.status != 200)
@@ -49,6 +101,8 @@ function hideLoadingMessage() {
 
 }
 
+//A function called loadList which pulls (or fetches) information from the API, called apiUrl
+//and then logs the information from the pokemon list into the console
 function loadList() {
   return fetch(apiUrl).then(function (response) {
     return response.json();
@@ -83,6 +137,7 @@ function loadDetails(item){
 
 function showDetails(pokemon) {
   loadDetails(pokemon).then(function () {
+    showModal(pokemon);
     console.log(pokemon);
   });
 }
@@ -94,13 +149,17 @@ function showDetails(pokemon) {
     showDetails: showDetails,
     loadList: loadList
 
+//End of function list
+
+
+
+
+
+
   };
 
 
 }) ();
-
-
-
 
 
 
