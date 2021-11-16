@@ -3,21 +3,22 @@ body{
   background-color: darkgrey;
   font-family: 'Arial', sans-serif;
   font-weight: 600;
+    /* Sets the font size to 42px */
   font-size: 42px;
-  /* Sets the font size to 42px */
-  line-height: 2.1;
   /* Sets the line-height to 2.1 */
+  line-height: 1.1;
+  text-align: center;
 }
 /* The purple banner at the top */
 h1 {
   color: red;
   background-color: purple;
-  border: 10px solid  #94241c;
+  border: 4px solid  #94241c;
+  text-align: center;
 }
 /*the buttons that are used by the pokemon API */
-.button-class {
+.btn {
   background-color: #d69c98;
-  border: none;
   color: #120808;
   padding: 16px 32px;
   text-align: center;
@@ -27,10 +28,19 @@ h1 {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  border: 6px solid  #94241c;
+  border: 6px solid #94241c;
 }
 
-/*===================== The modal CSS ===================== */
+.btn:hover {
+  background-color: #cf871b; /* Orange */
+  color: white;
+}
+/*Header for the modal */
+.modal-header {
+  color: #120808;
+  background-color: #641ba8;
+  border: 4px solid #94241c;
+  text-align: center;
 
 
-/* the Modal details. All stylings for the actual box goes here. */
+}
