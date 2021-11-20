@@ -25,18 +25,18 @@ let pokemonRepository = (function () {
   //Adds functionality to the buttons. When clicking button, shows the details
   //from the array to the log.
   function addListItem(pokemon){
-    let pokemonList = document.querySelector(".pokemon-list");
-    let listPokemon = document.createElement("li");
-    let button = document.createElement("button");
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listPokemon = document.createElement('li');
+    let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add("btn")
-    button.classList.add("btn-primary")
+    button.classList.add('btn')
+    button.classList.add('btn-primary')
     button.setAttribute('data-toggle', 'modal')
     button.setAttribute('data-target', '#exampleModal')
     button.setAttribute('type', 'button')
     listPokemon.appendChild(button);
     pokemonList.appendChild(listPokemon);
-    button.addEventListener('click', function (event) {
+    button.addEventListener('click', function () {
       showDetails(pokemon)
     });
   }
@@ -51,29 +51,29 @@ let pokemonRepository = (function () {
 
   //Code that handles the modal
   function showModal(pokemon) {
-
-    let modalBody = $(".modal-body");
-    let modalTitle = $(".modal-title");
-    let modalHeader = $(".modal-header");
+/* eslint-env jquery */
+    let modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
+    let modalHeader = $('.modal-header');
     modalHeader.empty()
     modalTitle.empty();
     modalBody.empty();
 
     //creates the information in the modal content
 
-    let pokemonName = $("<h1>" + pokemon.name + "</h1>");
+    let pokemonName = $('<h1>' + pokemon.name + '</h1>');
 
-    let pokemonSprite = $('<img class="modal-img" style="width:75%">');
-      pokemonSprite.attr("src", pokemon.imageUrl);
+    let pokemonSprite = $('<img class="modal-img" style="width:50%">');
+      pokemonSprite.attr('src', pokemon.imageUrl);
 
-    let pokemonHeight = $("<p>" + "height : " +
-     pokemon.height + "</p>");
+    let pokemonHeight = $('<p>' + 'height : ' +
+     pokemon.height + '</p>');
 
-    let pokemonWeight = $("<p>" + "weight : " +
-     pokemon.weight + "</p>");
+    let pokemonWeight = $('<p>' + 'weight : ' +
+     pokemon.weight + '</p>');
 
-    let pokemonTypes = $("<p>" + "types : " +
-       pokemon.types + "</p>");
+    let pokemonTypes = $('<p>' + 'types : ' +
+       pokemon.types + '</p>');
 
 
     modalHeader.append(pokemonName)
@@ -87,14 +87,21 @@ let pokemonRepository = (function () {
 
   //End of modal
 
+  // Searches for the pokemon based on what you type into the search bar
+      let pokeSearchBar = document.querySelector('#filter');
+      pokeSearchBar.addEventListener('input', () => {
+          let pokeListItem = document.querySelectorAll('li');
+          let filter = pokeSearchBar.value.toUpperCase();
 
-  //My attempt at a loading message. Yoops!
-  function showLoadingMessage() {
-    fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
-    if (response.status != 200)
-    window.alert('This is taking a while...');
-    return;
-  }
+          pokeListItem.forEach((listItem) => {
+              if (listItem.innerText.toUpperCase().indexOf(filter) > -1) {
+                  listItem.style.display = '';
+              } else {
+                  listItem.style.display = 'none';
+              }
+          });
+      });
+
 
   //A function called loadList which pulls (or fetches) information from the API, called apiUrl
   //and then logs the information from the pokemon list into the console
@@ -134,12 +141,7 @@ let pokemonRepository = (function () {
 
   }
 
-  function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
-      showModal(pokemon);
-      console.log(pokemon);
-    });
-  }
+
 
   return {
     add: add,
