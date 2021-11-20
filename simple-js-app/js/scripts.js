@@ -51,6 +51,7 @@ let pokemonRepository = (function () {
 
   //Code that handles the modal
   function showModal(pokemon) {
+
     let modalBody = $(".modal-body");
     let modalTitle = $(".modal-title");
     let modalHeader = $(".modal-header");
@@ -65,13 +66,13 @@ let pokemonRepository = (function () {
     let pokemonSprite = $('<img class="modal-img" style="width:75%">');
       pokemonSprite.attr("src", pokemon.imageUrl);
 
-     let pokemonHeight = $("<p>" + "height : " +
+    let pokemonHeight = $("<p>" + "height : " +
      pokemon.height + "</p>");
 
-     let pokemonWeight = $("<p>" + "weight : " +
+    let pokemonWeight = $("<p>" + "weight : " +
      pokemon.weight + "</p>");
 
-     let pokemonTypes = $("<p>" + "types : " +
+    let pokemonTypes = $("<p>" + "types : " +
        pokemon.types + "</p>");
 
 
